@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+
+    <title>To Do List</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="card bg-light">
+            <header class="p-4">
+                <form class="input-group" @submit.prevent="onSubmit">
+                    <input type="text" class="form-control" placeholder="Add a new task" v-model="addTask">
+                    <button class="btn btn-primary fs-3">+</button>
+                </form>
+            </header>
+
+            <main>
+                <main class="p-3">
+                    <div class="row row-cols-1 gy-1">
+                        <div class="col" v-for="(element, i) in taskList">
+                            <div class="card p-3 flex-row align-items-center">
+                                <label class="flex-fill d-flex align-items-center">
+                                    <input type="checkbox" class="form-check-input" v-model="element.isDone">
+                                    <span class=" ms-3 fs-4"
+                                        :class="(element.isDone) ? 'text-secondary text-decoration-line-through' : 'text-primary' ">{{element.text}}</span>
+                                </label>
+                                <button class="btn btn-danger" @click="onDeleteBtn(i)">Elimina</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </main>
+
+        </div>
+    </div>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
